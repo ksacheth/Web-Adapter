@@ -50,7 +50,6 @@ export default function SendSol() {
         })
       );
 
-      // Send + confirm
       const signature = await sendTransaction(tx, connection);
       const conf = await connection.confirmTransaction(
         { signature, blockhash, lastValidBlockHeight },
@@ -92,7 +91,7 @@ export default function SendSol() {
         onChange={(e) => setTo(e.target.value)}
       />
       <button
-        className="px-4 py-2 rounded-2xl border-2 border-black disabled:opacity-50"
+        className="px-4 py-2 rounded-2xl border-2 border-black disabled:opacity-50 cursor-pointer"
         onClick={onSend}
         disabled={!connected}
       >

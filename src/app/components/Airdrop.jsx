@@ -16,7 +16,7 @@ export default function ShowBalance() {
   return (
     <div className="flex gap-4">
       <input className="border-black border-2 rounded-2xl p-1 text-center"   id="amount" type="text" placeholder="Amount" />
-      <button onClick={sendAirdrop}> AirDrop</button>
+      <button onClick={sendAirdrop} className="px-4 py-2 rounded-2xl border-2 border-black cursor-pointer"> AirDrop</button>
     </div>
   );
 }

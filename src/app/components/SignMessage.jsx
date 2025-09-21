@@ -21,6 +21,6 @@ export default function SignMessage() {
   }
   return <div className="flex gap-4">
     <input  className="border-black border-2 rounded-2xl p-1 text-center" id="message" type="text" placeholder="Message" />
-    <button onClick={sign}>Sign the message</button>
+    <button onClick={sign} className="px-4 py-2 rounded-2xl border-2 border-black cursor-pointer">Sign the message</button>
   </div>;
 }
