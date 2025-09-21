@@ -21,8 +21,6 @@ export default function SendSol() {
         alert("Connect a wallet first.");
         return;
       }
-
-      // Validate recipient
       let toPubkey;
       try {
         toPubkey = new PublicKey(to.trim());
@@ -30,20 +28,15 @@ export default function SendSol() {
         alert("Invalid recipient address.");
         return;
       }
-
-      // Validate amount
       const amt = parseFloat(amount);
       if (!Number.isFinite(amt) || amt <= 0) {
         alert("Enter a valid, positive amount.");
         return;
       }
 
-      // Convert SOL -> lamports
       const lamports = Math.round(amt * LAMPORTS_PER_SOL);
 
-      // Build transaction
-      const { blockhash, lastValidBlockHeight } =
-        await connection.getLatestBlockhash();
+      const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
 
       const tx = new Transaction({
         feePayer: publicKey,
@@ -70,7 +63,7 @@ export default function SendSol() {
         return;
       }
 
-      alert(`✅ Sent ${amt} SOL to ${toPubkey.toBase58()}\nSig: ${signature}`);
+      alert(`Sent ${amt} SOL to ${toPubkey.toBase58()}\nSig: ${signature}`);
     } catch (e) {
       console.error(e);
       alert("Something went wrong while sending SOL.");
@@ -102,9 +95,8 @@ export default function SendSol() {
         className="px-4 py-2 rounded-2xl border-2 border-black disabled:opacity-50"
         onClick={onSend}
         disabled={!connected}
-        title={!connected ? "Connect wallet to send" : "Send SOL"}
       >
-        Send
+        {!connected ? "Connect Wallet" : "Send SOL"}
       </button>
     </div>
   );
